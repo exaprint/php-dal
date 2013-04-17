@@ -1,0 +1,23 @@
+{
+    "name": "exaprint/php-dal",
+    "description": "PHP Data Access Layer",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Romain Bessuges",
+            "email": "romain@exaprint.fr"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "romainbessugesmeusy/php-dsn-factory": "*",
+        "romainbessugesmeusy/php-sql-query": "*",
+        "rbm/php-results-combinator": "*",
+        "jdorn/sql-formatter": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Exaprint": "library/"
+        }
+    }
+}

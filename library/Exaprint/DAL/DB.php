@@ -27,7 +27,7 @@ class DB extends \PDO
         ]);
 
         parent::__construct($dsn, $_SERVER["dbuser"], $_SERVER["dbpassword"]);
-
+        self::setAttribute(self::ATTR_DEFAULT_FETCH_MODE, self::FETCH_OBJ);
         AbstractQuery::setDefaultRenderer(new SqlServer());
     }
 }

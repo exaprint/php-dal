@@ -9,24 +9,61 @@ use RBM\Utils\Dsn;
 
 class DB extends \PDO
 {
-    protected static $_instance;
+    protected static $_instances = [];
 
-    public static function getInstance()
+    protected static $_defaultEnv = "prod";
+
+    /**
+     * @param $defaultEnv
+     */
+    public static function setDefaultEnv($defaultEnv)
     {
-        if (!isset(self::$_instance)) self::$_instance = new self();
-        return self::$_instance;
+        self::$_defaultEnv = $defaultEnv;
     }
 
-    public function __construct()
+    /**
+     * @return string
+     */
+    public static function getDefaultEnv()
     {
+        return self::$_defaultEnv;
+    }
+
+    /**
+     * @param null $env
+     * @return mixed
+     */
+    public static function get($env = null)
+    {
+        $env = is_null($env) ? self::getDefaultEnv() : $env;
+
+        if (!isset(self::$_instances[$env])) self::$_instances[$env] = new self($env);
+
+        return self::$_instances[$env];
+    }
+
+    /**
+     * @param $env
+     * @throws \Exception
+     */
+    public function __construct($env)
+    {
+        if(!isset($_SERVER["exaprint_db_{$env}_host"])
+        || !isset($_SERVER["exaprint_db_{$env}_user"])
+        || !isset($_SERVER["exaprint_db_{$env}_pass"])
+        || !isset($_SERVER["exaprint_db_{$env}_port"])
+        || !isset($_SERVER["exaprint_db_{$env}_name"])){
+            throw new \Exception("SetEnv values missing");
+        }
+
         $dsn = new Dsn(Dsn::DBLIB, [
-            "dbname"   => $_SERVER["dbname"],
-            "host"     => $_SERVER["dbhost"],
-            "port"     => $_SERVER["dbport"],
+            "dbname"   => $_SERVER["exaprint_db_{$env}_name"],
+            "host"     => $_SERVER["exaprint_db_{$env}_host"],
+            "port"     => $_SERVER["exaprint_db_{$env}_port"],
             "encoding" => "UTF-8"
         ]);
 
-        parent::__construct($dsn, $_SERVER["dbuser"], $_SERVER["dbpassword"]);
+        parent::__construct($dsn, $_SERVER["exaprint_db_{$env}_user"], $_SERVER["exaprint_db_{$env}_pass"]);
         self::setAttribute(self::ATTR_DEFAULT_FETCH_MODE, self::FETCH_OBJ);
         AbstractQuery::setDefaultRenderer(new SqlServer());
     }

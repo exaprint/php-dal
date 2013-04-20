@@ -2,7 +2,7 @@
 
 namespace Exaprint\DAL\Produit\Famille\Produit;
 
-class Filter extends \RBM\SqlQuery\Filter
+class Filter extends \Exaprint\DAL\Filter
 {
 
 

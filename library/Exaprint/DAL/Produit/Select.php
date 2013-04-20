@@ -10,7 +10,7 @@ use RBM\SqlQuery\Func;
  * @package Exaprint\DAL\Produit
  * @method \Exaprint\DAL\Produit\Filter filter
  */
-class Select extends \RBM\SqlQuery\Select
+class Select extends \Exaprint\DAL\Select
 {
 
     protected $_filterClass = '\Exaprint\DAL\Produit\Filter';

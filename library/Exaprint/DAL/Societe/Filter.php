@@ -2,9 +2,8 @@
 
 namespace Exaprint\DAL\Societe;
 
-class Filter extends \RBM\SqlQuery\Filter
+class Filter extends \Exaprint\DAL\Filter
 {
-
 
     public function idSociete($IDSociete)
     {

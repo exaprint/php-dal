@@ -2,7 +2,7 @@
 
 namespace Exaprint\DAL\Produit\Option\Valeur;
 
-class Filter extends \RBM\SqlQuery\Filter
+class Filter extends \Exaprint\DAL\Filter
 {
 
 

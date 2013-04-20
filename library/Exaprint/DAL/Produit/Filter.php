@@ -4,7 +4,7 @@ namespace Exaprint\DAL\Produit;
 use RBM\SqlQuery\Column;
 use RBM\SqlQuery\Func;
 
-class Filter extends \RBM\SqlQuery\Filter
+class Filter extends \Exaprint\DAL\Filter
 {
 
     const OFFRE_CATALOGUE  = 1;

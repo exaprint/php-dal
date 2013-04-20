@@ -9,7 +9,7 @@ use RBM\SqlQuery\Column;
  * @package Exaprint\DAL\Client
  * @method \Exaprint\DAL\Client\Filter filter
  */
-class Select extends \RBM\SqlQuery\Select
+class Select extends \Exaprint\DAL\Select
 {
 
     protected $_filterClass = '\Exaprint\DAL\Client\Filter';

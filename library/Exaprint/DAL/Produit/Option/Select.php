@@ -8,7 +8,7 @@ use RBM\SqlQuery\Column;
  * Class Select
  * @package Exaprint\DAL\Produit\Option
  */
-class Select extends \RBM\SqlQuery\Select
+class Select extends \Exaprint\DAL\Select
 {
     public function __construct($cols = array(Column::ALL))
     {

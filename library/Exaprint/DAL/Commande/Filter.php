@@ -2,23 +2,21 @@
 
 namespace Exaprint\DAL\Commande;
 
-class Filter extends \RBM\SqlQuery\Filter
+class Filter extends \Exaprint\DAL\Filter
 {
 
     const BLOCAGE_TYPE_COMMERCIAL = 'commercial';
     const BLOCAGE_TYPE_PAO =     'pao';
     const BLOCAGE_TYPE_PAIEMENT = 'paiement';
 
-    public function dateAjout($debut, $fin)
+    /**
+     * @param null $debut
+     * @param null $fin
+     * @return $this
+     */
+    public function dateAjout($debut = null, $fin = null)
     {
-        if($debut && !$fin){
-            return $this->addClause("$this->_table.DateAjout >= '$debut'");
-        } else if ($fin && !$debut){
-            return $this->addClause("$this->_table.DateAjout <= '$fin'");
-        } else if ($debut && $fin){
-            return $this->addClause("$this->_table.DateAjout BETWEEN '$debut' AND '$fin'");
-        }
-        return $this;
+        return $this->_dateRange("DateAjout", $debut, $fin);
     }
 
     public function idCommandeEtat()

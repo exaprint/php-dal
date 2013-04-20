@@ -8,7 +8,7 @@
  */
 namespace Exaprint\DAL\Client;
 
-class Filter extends \RBM\SqlQuery\Filter
+class Filter extends \Exaprint\DAL\Filter
 {
     public function idPays()
     {

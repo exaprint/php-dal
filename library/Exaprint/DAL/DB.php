@@ -31,7 +31,7 @@ class DB extends \PDO
 
     /**
      * @param null $env
-     * @return mixed
+     * @return self
      */
     public static function get($env = null)
     {

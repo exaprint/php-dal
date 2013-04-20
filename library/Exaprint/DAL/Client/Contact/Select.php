@@ -10,7 +10,7 @@ namespace Exaprint\DAL\Client\Contact;
 
 use RBM\SqlQuery\Column;
 
-class Select extends \RBM\SqlQuery\Select
+class Select extends \Exaprint\DAL\Select
 {
 
     public function __construct($cols = array(Column::ALL))

@@ -9,9 +9,16 @@ use RBM\Utils\Dsn;
 
 class DB extends \PDO
 {
+
+    const ENV_DEV_BACK  = 'dev_back';
+    const ENV_DEV_FRONT = 'dev_front';
+    const ENV_DEV_REF   = 'dev_ref';
+    const ENV_STAGE     = 'stage';
+    const ENV_PROD      = 'prod';
+
     protected static $_instances = [];
 
-    protected static $_defaultEnv = "prod";
+    protected static $_defaultEnv;
 
     /**
      * @param $defaultEnv
@@ -26,6 +33,13 @@ class DB extends \PDO
      */
     public static function getDefaultEnv()
     {
+        if (!isset(self::$_defaultEnv)) {
+            if (isset($_SERVER['exaprint_db_env'])) {
+                self::$_defaultEnv = $_SERVER['exaprint_db_env'];
+            } else {
+                throw new \Exception('No DB env specified : $_SERVER[exaprint_db_env]');
+            }
+        }
         return self::$_defaultEnv;
     }
 
@@ -48,11 +62,12 @@ class DB extends \PDO
      */
     public function __construct($env)
     {
-        if(!isset($_SERVER["exaprint_db_{$env}_host"])
-        || !isset($_SERVER["exaprint_db_{$env}_user"])
-        || !isset($_SERVER["exaprint_db_{$env}_pass"])
-        || !isset($_SERVER["exaprint_db_{$env}_port"])
-        || !isset($_SERVER["exaprint_db_{$env}_name"])){
+        if (!isset($_SERVER["exaprint_db_{$env}_host"])
+            || !isset($_SERVER["exaprint_db_{$env}_user"])
+            || !isset($_SERVER["exaprint_db_{$env}_pass"])
+            || !isset($_SERVER["exaprint_db_{$env}_port"])
+            || !isset($_SERVER["exaprint_db_{$env}_name"])
+        ) {
             throw new \Exception("SetEnv values missing");
         }
 

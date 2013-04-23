@@ -18,6 +18,7 @@ class Select extends \Exaprint\DAL\Select
     {
         parent::__construct("TBL_COMMANDE", $cols);
     }
+
     /**
      * @return \RBM\SqlQuery\Select
      */
@@ -45,9 +46,24 @@ class Select extends \Exaprint\DAL\Select
     /**
      * @return \RBM\SqlQuery\Select
      */
-    public function certification(){
-        return $this->join('TBL_COMMANDE_TL_CERTIFICATION_SOCIETE','IDCommande')
-            ->join('TBL_CERTIFICATION_TL_SOCIETE','IDCertificationSociete')
-            ->join('TBL_CERTIFICATION','IDCertification');
+    public function certification()
+    {
+        return $this->join('TBL_COMMANDE_TL_CERTIFICATION_SOCIETE', 'IDCommande')
+            ->join('TBL_CERTIFICATION_TL_SOCIETE', 'IDCertificationSociete')
+            ->join('TBL_CERTIFICATION', 'IDCertification');
+    }
+
+    /**
+     * @return \Exaprint\DAL\Partenaire\Commande\Select
+     */
+    public function commandePartenaire()
+    {
+        return $this->join(
+            "TBL_COMMANDE_PARTENAIRE",
+            "IDCommandePartenaire",
+            "IDCommandePartenaire",
+            [],
+            '\Exaprint\DAL\Partenaire\Commande'
+        );
     }
 }

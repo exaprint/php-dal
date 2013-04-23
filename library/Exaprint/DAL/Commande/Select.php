@@ -12,7 +12,7 @@ use RBM\SqlQuery\Column;
 class Select extends \Exaprint\DAL\Select
 {
 
-    protected $_filterClass = '\RBM\DAL\Commande\Filter';
+    protected $_filterClass = '\Exaprint\DAL\Commande\Filter';
 
     public function __construct($cols = array(Column::ALL))
     {

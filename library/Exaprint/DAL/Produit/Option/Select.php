@@ -10,11 +10,6 @@ use RBM\SqlQuery\Column;
  */
 class Select extends \Exaprint\DAL\Select
 {
-    public function __construct($cols = array(Column::ALL))
-    {
-        parent::__construct("TBL_PRODUIT_OPTION", $cols);
-    }
-
 
     /**
      * @param $IDLangue

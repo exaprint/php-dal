@@ -11,16 +11,8 @@ use RBM\SqlQuery\Column;
  */
 class Select extends \Exaprint\DAL\Select
 {
-
-    protected $_filterClass = '\Exaprint\DAL\Commande\Filter';
-
-    public function __construct($cols = array(Column::ALL))
-    {
-        parent::__construct("TBL_COMMANDE", $cols);
-    }
-
     /**
-     * @return \RBM\SqlQuery\Select
+     * @return \Exaprint\DAL\Commande\Ligne\Select
      */
     public function ligne()
     {
@@ -28,11 +20,12 @@ class Select extends \Exaprint\DAL\Select
     }
 
     /**
+     * @deprecated
      * @return \Exaprint\DAL\Produit\Select
      */
     public function produit()
     {
-        return $this->ligne()->join('TBL_PRODUIT', 'IDProduit', 'IDProduit', [], '\Exaprint\DAL\Produit\Select');
+        return $this->ligne()->produit();
     }
 
     /**
@@ -40,7 +33,7 @@ class Select extends \Exaprint\DAL\Select
      */
     public function client()
     {
-        return $this->join('TBL_CLIENT', 'IDClient', 'IDClient', [], '\Exaprint\DAL\Client\Select');
+        return $this->join('TBL_CLIENT', 'IDClient');
     }
 
     /**
@@ -58,12 +51,6 @@ class Select extends \Exaprint\DAL\Select
      */
     public function commandePartenaire()
     {
-        return $this->join(
-            "TBL_COMMANDE_PARTENAIRE",
-            "IDCommandePartenaire",
-            "IDCommandePartenaire",
-            [],
-            '\Exaprint\DAL\Partenaire\Commande'
-        );
+        return $this->join("TBL_COMMANDE_PARTENAIRE", "IDCommandePartenaire");
     }
 }

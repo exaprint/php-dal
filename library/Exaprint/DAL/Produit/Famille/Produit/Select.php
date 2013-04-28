@@ -11,14 +11,6 @@ use RBM\SqlQuery\Column;
  */
 class Select extends \Exaprint\DAL\Select
 {
-
-    protected $_filterClass = '\Exaprint\Dal\Produit\Fmaille\Produit\Filter';
-
-    public function __construct($cols = array(Column::ALL))
-    {
-        parent::__construct("TBL_PRODUIT_FAMILLE_PRODUIT", $cols);
-    }
-
     /**
      * @param $IDLangue
      * @return \RBM\SqlQuery\Select

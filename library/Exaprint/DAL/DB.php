@@ -4,6 +4,7 @@ namespace Exaprint\DAL;
 
 
 use RBM\SqlQuery\AbstractQuery;
+use RBM\SqlQuery\Factory;
 use RBM\SqlQuery\Renderer\SqlServer;
 use RBM\Utils\Dsn;
 
@@ -57,6 +58,65 @@ class DB extends \PDO
     }
 
     /**
+     *
+     */
+    public static function initSqlQuery()
+    {
+        AbstractQuery::setDefaultRenderer(new SqlServer());
+
+        Factory::setClassMap([
+
+            "TBL_COMMANDE"                 => [
+                "select" => '\Exaprint\DAL\Commande\Select',
+                "filter" => '\Exaprint\DAL\Commande\Filter',
+            ],
+
+            "TBL_COMMANDE_LIGNE"           => [
+                "select" => '\Exaprint\DAL\Commande\Ligne\Select',
+                "filter" => '\Exaprint\DAL\Commande\Ligne\Filter',
+            ],
+
+            "TBL_CLIENT"                   => [
+                "select" => '\Exaprint\DAL\Client\Select',
+                "filter" => '\Exaprint\DAL\Client\Filter',
+            ],
+
+            "TBL_CLIENT_ADRESSELIVRAISON"  => [
+                "select" => '\Exaprint\DAL\Client\AdresseLivraison\Select',
+            ],
+
+            "TBL_CLIENT_CONTACT"           => [
+                "select" => '\Exaprint\DAL\Client\Contact\Select',
+            ],
+
+            "TBL_PRODUIT"                  => [
+                "select" => '\Exaprint\DAL\Produit\Select',
+                "filter" => '\Exaprint\DAL\Produit\Filter',
+            ],
+
+            "TBL_PRODUIT_FAMILLE_ARTICLES" => [
+                "select" => '\Exaprint\DAL\Produit\Famille\Articles\Select',
+                "filter" => '\Exaprint\DAL\Produit\Famille\Articles\Filter',
+            ],
+
+            "TBL_PRODUIT_FAMILLE_PRODUIT"  => [
+                "select" => '\Exaprint\DAL\Produit\Famille\Produit\Select',
+                "filter" => '\Exaprint\DAL\Produit\Famille\Produit\Filter',
+            ],
+
+            "TBL_PRODUIT_OPTION"           => [
+                "select" => '\Exaprint\DAL\Produit\Option\Select',
+                "filter" => '\Exaprint\DAL\Produit\Option\Filter',
+            ],
+
+            "TBL_PRODUIT_OPTION_VALEUR"    => [
+                "select" => '\Exaprint\DAL\Produit\Option\Valeur\Select',
+                "filter" => '\Exaprint\DAL\Produit\Option\Valeur\Filter',
+            ],
+        ]);
+    }
+
+    /**
      * @param $env
      * @throws \Exception
      */
@@ -80,6 +140,5 @@ class DB extends \PDO
 
         parent::__construct($dsn, $_SERVER["exaprint_db_{$env}_user"], $_SERVER["exaprint_db_{$env}_pass"]);
         self::setAttribute(self::ATTR_DEFAULT_FETCH_MODE, self::FETCH_OBJ);
-        AbstractQuery::setDefaultRenderer(new SqlServer());
     }
 }

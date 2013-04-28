@@ -13,14 +13,6 @@ use RBM\SqlQuery\Func;
 class Select extends \Exaprint\DAL\Select
 {
 
-    protected $_filterClass = '\Exaprint\DAL\Produit\Filter';
-
-    public function __construct($cols = array(Column::ALL))
-    {
-        parent::__construct("TBL_PRODUIT", $cols); //
-    }
-
-
     /**
      * @param $IDSociete
      * @return \RBM\SqlQuery\Select
@@ -37,13 +29,7 @@ class Select extends \Exaprint\DAL\Select
      */
     public function familleProduit()
     {
-        return $this->join(
-            "TBL_PRODUIT_FAMILLE_PRODUIT",
-            'IDProduitFamilleProduit',
-            'IDProduitFamilleProduit',
-            [],
-            '\Exaprint\DAL\Produit\Famille\Produit\Select'
-        );
+        return $this->join("TBL_PRODUIT_FAMILLE_PRODUIT", 'IDProduitFamilleProduit');
     }
 
     /**

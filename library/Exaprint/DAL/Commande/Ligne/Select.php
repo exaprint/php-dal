@@ -6,10 +6,8 @@ use RBM\SqlQuery\Column;
 
 class Select extends \Exaprint\DAL\Select
 {
-    protected $_filterClass = '\Exaprint\DAL\Commande\Ligne\Filter';
-
-    public function __construct($cols = array(Column::ALL))
+    public function produit()
     {
-        parent::__construct("TBL_COMMANDE_LIGNE", $cols);
+        return $this->join("TBL_PRODUIT", "IDProduit");
     }
 }

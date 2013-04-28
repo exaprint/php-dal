@@ -7,11 +7,6 @@ use RBM\SqlQuery\Column;
 class Select extends \Exaprint\DAL\Select
 {
 
-    public function __construct($cols = array(Column::ALL))
-    {
-        parent::__construct("TBL_CLIENT_ADRESSELIVRAISON", $cols);
-    }
-
     public function client()
     {
         return $this->join('TBL_CLIENT', 'IDClient');

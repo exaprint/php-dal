@@ -12,14 +12,6 @@ use RBM\SqlQuery\Column;
 class Select extends \Exaprint\DAL\Select
 {
 
-    protected $_filterClass = '\Exaprint\DAL\Client\Filter';
-
-    public function __construct($cols = array(Column::ALL))
-    {
-        parent::__construct("TBL_CLIENT", $cols);
-    }
-
-
     public function societe()
     {
         return $this->join('TBL_SOCIETE', 'IDSociete');

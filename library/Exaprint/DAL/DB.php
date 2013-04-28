@@ -113,6 +113,14 @@ class DB extends \PDO
                 "select" => '\Exaprint\DAL\Produit\Option\Valeur\Select',
                 "filter" => '\Exaprint\DAL\Produit\Option\Valeur\Filter',
             ],
+
+            "TBL_COMMANDE_PARTENAIRE" => [
+                "select" => '\Exaprint\DAL\Partenaire\Commande\Select',
+            ],
+
+            "TBL_PARTENAIRE" => [
+                "select" => '\Exaprint\DAL\Partenaire\Select',
+            ],
         ]);
     }
 

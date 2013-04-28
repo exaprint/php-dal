@@ -13,4 +13,9 @@ class Select extends \RBM\SqlQuery\Select
     {
         return $this->join("TBL_COMMANDE", "IDCommandePartenaire");
     }
+
+    public function misesAJour()
+    {
+        return $this->join("TBL_COMMANDE_PARTENAIRE_MISE_A_JOUR", "IDCommandePartenaire");
+    }
 }

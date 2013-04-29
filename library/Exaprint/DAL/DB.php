@@ -150,3 +150,5 @@ class DB extends \PDO
         self::setAttribute(self::ATTR_DEFAULT_FETCH_MODE, self::FETCH_OBJ);
     }
 }
+
+DB::initSqlQuery();

@@ -53,4 +53,12 @@ class Select extends \Exaprint\DAL\Select
     {
         return $this->join("TBL_COMMANDE_PARTENAIRE", "IDCommandePartenaire");
     }
+
+    /**
+     * @return \Exaprint\DAL\Commande\Etat\Select
+     */
+    public function etat()
+    {
+        return $this->join("TBL_COMMANDE_ETAT", "IDCommandeEtat");
+    }
 }

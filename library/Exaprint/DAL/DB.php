@@ -76,6 +76,11 @@ class DB extends \PDO
                 "filter" => '\Exaprint\DAL\Commande\Ligne\Filter',
             ],
 
+            "TBL_COMMANDE_ETAT"            => [
+                "select" => '\Exaprint\DAL\Commande\Etat\Select',
+                "filter" => '\Exaprint\DAL\Commande\Etat\Filter',
+            ],
+
             "TBL_CLIENT"                   => [
                 "select" => '\Exaprint\DAL\Client\Select',
                 "filter" => '\Exaprint\DAL\Client\Filter',
@@ -114,11 +119,11 @@ class DB extends \PDO
                 "filter" => '\Exaprint\DAL\Produit\Option\Valeur\Filter',
             ],
 
-            "TBL_COMMANDE_PARTENAIRE" => [
+            "TBL_COMMANDE_PARTENAIRE"      => [
                 "select" => '\Exaprint\DAL\Partenaire\Commande\Select',
             ],
 
-            "TBL_PARTENAIRE" => [
+            "TBL_PARTENAIRE"               => [
                 "select" => '\Exaprint\DAL\Partenaire\Select',
             ],
         ]);

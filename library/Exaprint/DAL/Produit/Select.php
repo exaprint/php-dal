@@ -52,6 +52,17 @@ class Select extends \Exaprint\DAL\Select
     }
 
     /**
+     * @param $IDPartenaire
+     * @return \RBM\SqlQuery\Select
+     */
+    public function partenaire($IDPartenaire)
+    {
+        $tl = $this->join("TBL_PARTENAIRE_TL_PRODUIT", "IDProduit");
+        $tl->filter()->equals("IDPartenaire", $IDPartenaire);
+        return $tl->join("TBL_PARTENAIRE", "IDPartenaire");
+    }
+
+    /**
      * @param $IDProduitOption
      * @return \RBM\SqlQuery\Select
      */

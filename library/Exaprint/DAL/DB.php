@@ -60,7 +60,7 @@ class DB extends \PDO
     /**
      *
      */
-    public static function initSqlQuery()
+    public static function init()
     {
         AbstractQuery::setDefaultRenderer(new SqlServer());
 
@@ -151,4 +151,4 @@ class DB extends \PDO
     }
 }
 
-DB::initSqlQuery();
+DB::init();

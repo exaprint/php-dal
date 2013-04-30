@@ -18,6 +18,7 @@
     "autoload": {
         "psr-0": {
             "Exaprint": "library/"
-        }
+        },
+        "files": ["library/Exaprint/DAL/init.php"]
     }
 }

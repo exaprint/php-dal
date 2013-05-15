@@ -38,4 +38,30 @@ class Select extends \RBM\SqlQuery\Select
         $j->setJoinType($joinType);
         return $j;
     }
+
+    /**
+     * @param array $cols
+     * @return \Exaprint\DAL\Produit\Select
+     */
+    public function produit($cols = [])
+    {
+        return $this->join("TBL_PRODUIT", "IDProduit", "IDProduit", $cols);
+    }
+
+    /**
+     * @param array $cols
+     * @param string $joinType
+     * @return \RBM\SqlQuery\Select
+     */
+    public function optionsProduit($cols = [], $joinType = self::JOIN_LEFT)
+    {
+        $j = $this->join(
+            "TBL_COMMANDE_PARTENAIRE_TL_OPTION_PRODUIT",
+            "IDCommandePartenaire",
+            "IDCommandePartenaire",
+            $cols
+        );
+        $j->setJoinType($joinType);
+        return $j;
+    }
 }

@@ -17,19 +17,25 @@ class Select extends \RBM\SqlQuery\Select
 
     /**
      * @param array $cols
+     * @param string $joinType
      * @return \RBM\SqlQuery\Select
      */
-    public function misesAJour($cols = [])
+    public function misesAJour($cols = [], $joinType = self::JOIN_LEFT)
     {
-        return $this->join("TBL_COMMANDE_PARTENAIRE_MISE_A_JOUR", "IDCommandePartenaire", "IDCommandePartenaire", $cols);
+        $j = $this->join("TBL_COMMANDE_PARTENAIRE_MISE_A_JOUR", "IDCommandePartenaire", "IDCommandePartenaire", $cols);
+        $j->setJoinType($joinType);
+        return $j;
     }
 
     /**
      * @param array $cols
+     * @param string $joinType
      * @return \RBM\SqlQuery\Select
      */
-    public function transferts($cols = [])
+    public function transferts($cols = [], $joinType = self::JOIN_LEFT)
     {
-        return $this->join("TBL_COMMANDE_PARTENAIRE_TRANSFERT", "IDCommandePartenaire", "IDCommandePartenaire", $cols);
+        $j = $this->join("TBL_COMMANDE_PARTENAIRE_TRANSFERT", "IDCommandePartenaire", "IDCommandePartenaire", $cols);
+        $j->setJoinType($joinType);
+        return $j;
     }
 }

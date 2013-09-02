@@ -43,7 +43,7 @@ class Filter extends \Exaprint\DAL\Filter
         $col = new Func("CONCAT", [",", $col , ","]);
 
         foreach ($this->_IDsProduitOptionValeur as $IDProduitOption => $IDsPov) {
-            $optionSubfilter = new \RBM\SqlQuery\Filter();
+            $optionSubfilter = new \RBM\SqlQuery\Filter($this->_query, $this);
             $optionSubfilter->setTable($this->getTable());
             $optionSubfilter = $optionSubfilter->conjonction(self::CONJONCTION_OR);
             $sf[] = $optionSubfilter;
@@ -53,7 +53,7 @@ class Filter extends \Exaprint\DAL\Filter
         }
 
         foreach ($this->_IDsProduitOptionValeurExcluded as $IDProduitOption => $IDsPov) {
-            $optionSubfilter = new \RBM\SqlQuery\Filter();
+            $optionSubfilter = new \RBM\SqlQuery\Filter($this->_query,$this);
             $optionSubfilter->setTable($this->getTable());
             $optionSubfilter = $optionSubfilter->conjonction(self::CONJONCTION_OR);
             $sf[] = $optionSubfilter;

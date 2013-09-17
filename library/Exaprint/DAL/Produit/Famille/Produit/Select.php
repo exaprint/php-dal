@@ -40,16 +40,22 @@ class Select extends \Exaprint\DAL\Select
 
     /**
      * @param array $cols
+     * @param null|int $typeOption
      * @return \Exaprint\DAL\Produit\Famille\Produit\Option\Select
      */
-    public function produitOptions($cols = [])
+    public function produitOptions($cols = [], $typeOption = null)
     {
-        return $this->leftJoin(
+        /** @var \Exaprint\DAL\Produit\Famille\Produit\Option\Select $options */
+        $options = $this->join(
             'TBL_PRODUIT_TL_PRODUIT_OPTION_FAMILLE_PRODUIT',
             'IDProduitFamilleProduit',
             'IDProduitFamilleProduit',
             $cols
         );
+
+        if(!is_null($typeOption)){
+            $options->option()->filter()->eq('TypeOption', $typeOption);
+        }
     }
 
 }

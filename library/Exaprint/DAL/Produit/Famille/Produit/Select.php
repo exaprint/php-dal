@@ -54,7 +54,7 @@ class Select extends \Exaprint\DAL\Select
         );
 
         if(!is_null($typeOption)){
-            $options->option()->filter()->eq('TypeOption', $typeOption);
+            $options->option()->filter()->eq('TypeProduitOption', $typeOption);
         }
     }
 

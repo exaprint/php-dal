@@ -11,12 +11,6 @@ use RBM\Utils\Dsn;
 class DB extends \PDO
 {
 
-    const ENV_DEV_BACK  = 'dev_back';
-    const ENV_DEV_FRONT = 'dev_front';
-    const ENV_DEV_REF   = 'dev_ref';
-    const ENV_STAGE     = 'stage';
-    const ENV_PROD      = 'prod';
-
     protected static $_instances = [];
 
     protected static $_defaultEnv;
@@ -35,10 +29,12 @@ class DB extends \PDO
     public static function getDefaultEnv()
     {
         if (!isset(self::$_defaultEnv)) {
-            if (isset($_SERVER['exaprint_db_env'])) {
+            if (isset($_SERVER['exaprint_env'])) {
+                self::$_defaultEnv = $_SERVER['exaprint_env'];
+            } else if (isset($_SERVER['exaprint_db_env'])){
                 self::$_defaultEnv = $_SERVER['exaprint_db_env'];
             } else {
-                throw new \Exception('No DB env specified : $_SERVER[exaprint_db_env]');
+                throw new \Exception('No env specified : $_SERVER[exaprint_env]');
             }
         }
         return self::$_defaultEnv;
@@ -109,6 +105,14 @@ class DB extends \PDO
                 "filter" => '\Exaprint\DAL\Produit\Famille\Produit\Filter',
             ],
 
+            "TBL_PRODUIT_TL_PRODUIT_OPTION_FAMILLE_PRODUIT"  => [
+                "select" => '\Exaprint\DAL\Produit\Famille\Produit\Option\Select',
+            ],
+
+            "TBL_PRODUIT_TL_PRODUIT_OPTION_VALEUR_PRODUIT_OPTION_FAMILLE_PRODUIT"  => [
+                "select" => '\Exaprint\DAL\Produit\Famille\Produit\Option\Valeur\Select',
+            ],
+
             "TBL_PRODUIT_OPTION"           => [
                 "select" => '\Exaprint\DAL\Produit\Option\Select',
                 "filter" => '\Exaprint\DAL\Produit\Option\Filter',
@@ -125,6 +129,10 @@ class DB extends \PDO
 
             "TBL_PARTENAIRE"               => [
                 "select" => '\Exaprint\DAL\Partenaire\Select',
+            ],
+
+            "TBL_TL_COMMANDE_PRINTBOX" => [
+                "select" => '\Exaprint\DAL\Printbox\Projet\Select'
             ],
         ]);
     }

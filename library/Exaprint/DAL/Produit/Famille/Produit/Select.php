@@ -23,16 +23,32 @@ class Select extends \Exaprint\DAL\Select
     }
 
     /**
+     *
+     * @param array $cols
      * @return \Exaprint\DAL\Produit\Famille\Articles\Select
      */
-    public function familleArticles()
+    public function familleArticles($cols = [])
     {
         return $this->join(
             'TBL_PRODUIT_FAMILLE_ARTICLES',
             'IDProduitFamilleArticles',
             'IDProduitFamilleArticles',
-            [],
+            $cols,
             '\Exaprint\DAL\Produit\Famille\Articles\Select'
+        );
+    }
+
+    /**
+     * @param array $cols
+     * @return \Exaprint\DAL\Produit\Famille\Produit\Option\Select
+     */
+    public function produitOptions($cols = [])
+    {
+        return $this->leftJoin(
+            'TBL_PRODUIT_TL_PRODUIT_OPTION_FAMILLE_PRODUIT',
+            'IDProduitFamilleProduit',
+            'IDProduitFamilleProduit',
+            $cols
         );
     }
 

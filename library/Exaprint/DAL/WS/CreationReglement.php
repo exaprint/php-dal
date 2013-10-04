@@ -4,7 +4,7 @@ namespace Exaprint\DAL\WS;
 
 use Exaprint\DAL\WS\CSV\DetailsReglement;
 
-class ConnexionOK extends WebServiceAbstract
+class CreationReglement extends  WebServiceAbstract
 {
 
     protected $_params = [

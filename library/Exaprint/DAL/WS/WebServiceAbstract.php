@@ -2,6 +2,8 @@
 
 namespace Exaprint\DAL\WS;
 
+use Exaprint\DAL\WS\CSV\CsvAbstract;
+
 abstract class WebServiceAbstract
 {
     const TYPE_INT    = 1;
@@ -76,8 +78,12 @@ abstract class WebServiceAbstract
             case self::TYPE_FLOAT:
                 return floatval($value);
             case self::TYPE_CSV:
+                if($value instanceof CsvAbstract)
+                    return implode(';', $value->asArray());
+
                 if (!is_array($value))
                     throw new \InvalidArgumentException("Value for param of type CSV must be an array");
+
                 return implode(';', $value);
             case self::TYPE_DATE:
                 if (is_a($value, '\DateTime')) {

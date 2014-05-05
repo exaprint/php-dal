@@ -11,7 +11,7 @@ class GestionAdresseLivraison extends WebServiceAbstract
     protected $_params = [
         'psCleJeton'                  => null,
         'pnTypeAction'                => null,
-        'pnIDClientAdresseLivraison'  => null,
+        'pnIDClientAdresseLivraison'  => 0,
         'psIntitule'                  => '',
         'psAdresseLivraison1'         => '',
         'psAdresseLivraison2'         => '',

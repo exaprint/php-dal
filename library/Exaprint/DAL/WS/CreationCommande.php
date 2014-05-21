@@ -54,6 +54,7 @@ class CreationCommande extends WebServiceAbstract
         'psCSVFraisDon'                  => '',
         'psCSVFraisExaclub'              => '',
         'psCSVFraisBatPapier'            => '',
+        'pmMontantRevente'               => 0,
 
     ];
 

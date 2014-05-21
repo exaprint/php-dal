@@ -62,7 +62,7 @@ class CreationCommande extends WebServiceAbstract
      */
     public function getName()
     {
-        return "WS_nCreationDevis";
+        return "WS_nCreationCommande";
     }
 
     public function pnIDClient($value)

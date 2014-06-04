@@ -152,7 +152,9 @@ class DB extends \PDO
             throw new \Exception("SetEnv values missing");
         }
 
-        $dsn = new Dsn(Dsn::DBLIB, [
+        $driver = isset($_SERVER["exaprint_db_{$env}_driver"]) ? $_SERVER["exaprint_db_{$env}_driver"] : Dsn::DBLIB;
+
+        $dsn = new Dsn($driver, [
             "dbname"   => $_SERVER["exaprint_db_{$env}_name"],
             "host"     => $_SERVER["exaprint_db_{$env}_host"],
             "port"     => $_SERVER["exaprint_db_{$env}_port"],

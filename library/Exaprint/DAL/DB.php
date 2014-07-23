@@ -163,6 +163,7 @@ class DB extends \PDO
 
         parent::__construct($dsn, $_SERVER["exaprint_db_{$env}_user"], $_SERVER["exaprint_db_{$env}_pass"]);
         self::setAttribute(self::ATTR_DEFAULT_FETCH_MODE, self::FETCH_OBJ);
+        $this->query('SET DATEFIRST 1');
     }
 }
 

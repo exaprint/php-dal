@@ -5,7 +5,7 @@ class VotreProfil2 extends WebServiceAbstract
 {
     protected $_params = [
         'psCleJeton' => null,
-        'pnIDClient' => null,
+        'pnIdClient' => null,
         'psTailleSociete' => null,
         'pnIdActivite' => null,
         'pnNbPersonne' => null,
@@ -33,9 +33,9 @@ class VotreProfil2 extends WebServiceAbstract
      * @param $value
      * @return $this
      */
-    public function pnIDClient($value)
+    public function pnIdClient($value)
     {
-        return $this->_setParam('pnIDClient', $value, self::TYPE_STRING);
+        return $this->_setParam('pnIdClient', $value, self::TYPE_STRING);
     }
 
     /**

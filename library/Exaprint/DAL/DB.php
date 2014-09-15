@@ -2,18 +2,20 @@
 
 namespace Exaprint\DAL;
 
+use \PDO;
+use \Exception;
 
 use RBM\SqlQuery\AbstractQuery;
 use RBM\SqlQuery\Factory;
 use RBM\SqlQuery\Renderer\SqlServer;
-use RBM\Utils\Dsn;
 
-class DB extends \PDO
+class DB extends PDO
 {
 
     protected static $_instances = [];
 
     protected static $_defaultEnv;
+    protected static $_defaultParameters = null;
 
     /**
      * @param $defaultEnv
@@ -21,6 +23,14 @@ class DB extends \PDO
     public static function setDefaultEnv($defaultEnv)
     {
         self::$_defaultEnv = $defaultEnv;
+    }
+
+    /**
+     * @param $defaultEnv
+     */
+    public static function setDefaultParameters($pParameters)
+    {
+        self::$_defaultParameters = $pParameters;
     }
 
     /**
@@ -34,7 +44,7 @@ class DB extends \PDO
             } else if (isset($_SERVER['exaprint_db_env'])){
                 self::$_defaultEnv = $_SERVER['exaprint_db_env'];
             } else {
-                throw new \Exception('No env specified : $_SERVER[exaprint_env]');
+                throw new Exception('No env specified : $_SERVER[exaprint_env]');
             }
         }
         return self::$_defaultEnv;
@@ -44,13 +54,15 @@ class DB extends \PDO
      * @param null $env
      * @return self
      */
-    public static function get($env = null)
+    public static function get($pEnvironment = null)
     {
-        $env = is_null($env) ? self::getDefaultEnv() : $env;
+        $lEnvironment = is_null($pEnvironment) ? self::getDefaultEnv() : $pEnvironment;
 
-        if (!isset(self::$_instances[$env])) self::$_instances[$env] = new self($env);
+        if (!isset(self::$_instances[$lEnvironment])) {
+            self::$_instances[$lEnvironment] = new self($lEnvironment, self::$_defaultParameters);
+        }
 
-        return self::$_instances[$env];
+        return self::$_instances[$lEnvironment];
     }
 
     /**
@@ -141,30 +153,41 @@ class DB extends \PDO
      * @param $env
      * @throws \Exception
      */
-    public function __construct($env)
-    {
-        if (!isset($_SERVER["exaprint_db_{$env}_host"])
-            || !isset($_SERVER["exaprint_db_{$env}_user"])
-            || !isset($_SERVER["exaprint_db_{$env}_pass"])
-            || !isset($_SERVER["exaprint_db_{$env}_port"])
-            || !isset($_SERVER["exaprint_db_{$env}_name"])
-        ) {
-            throw new \Exception("SetEnv values missing");
+    public function __construct($pEnvironment, $pOptionalParameters = null) {
+
+        $lStrategies = array(
+            "Exaprint\\DAL\\DB\\ConfigurationStrategy",
+            "Exaprint\\DAL\\DB\\ServerEnvStrategy"
+        );
+
+        $lValidStrategyFound = false;
+
+        foreach($lStrategies as $lStrategyClassName) {
+            try {
+                $lStrategy = new $lStrategyClassName($pEnvironment, $pOptionalParameters);
+            } catch(Exception $e) {
+                // This strategy doesn't exist !
+                continue;
+            }
+            if($lStrategy->isValid()) {
+                $lValidStrategyFound = true;
+                parent::__construct(
+                    $lStrategy->getDsn(),
+                    $lStrategy->getUserName(),
+                    $lStrategy->getPassword()
+                );
+                break;
+            }
         }
 
-        $driver = isset($_SERVER["exaprint_db_{$env}_driver"]) ? $_SERVER["exaprint_db_{$env}_driver"] : Dsn::DBLIB;
-
-        $dsn = new Dsn($driver, [
-            "dbname"   => $_SERVER["exaprint_db_{$env}_name"],
-            "host"     => $_SERVER["exaprint_db_{$env}_host"],
-            "port"     => $_SERVER["exaprint_db_{$env}_port"],
-            "encoding" => "UTF-8"
-        ]);
-
-        parent::__construct($dsn, $_SERVER["exaprint_db_{$env}_user"], $_SERVER["exaprint_db_{$env}_pass"]);
-        self::setAttribute(self::ATTR_DEFAULT_FETCH_MODE, self::FETCH_OBJ);
-        $this->query('SET DATEFIRST 1');
+        if(!$lValidStrategyFound) {
+            throw new Exception("No valid strategy for DB connection.");
+        } else {
+            // Set Default Fetch Mode
+            self::setAttribute(self::ATTR_DEFAULT_FETCH_MODE, self::FETCH_OBJ);
+            // Set first day of weeks
+            $this->query('SET DATEFIRST 1');
+        }
     }
-}
 
-DB::init();
+}

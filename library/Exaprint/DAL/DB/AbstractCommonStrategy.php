@@ -9,7 +9,7 @@
 namespace Exaprint\DAL\DB;
 
 
-abstract class AbstractStrategy {
+abstract class AbstractCommonStrategy implements IStrategy {
 
     protected $mEnvironment;
     protected $mOptionalParameters;
@@ -18,13 +18,5 @@ abstract class AbstractStrategy {
         $this->mEnvironment = $pEnvironment;
         $this->mOptionalParameters = $pOptionalParameters;
     }
-
-    abstract public function isValid();
-
-    abstract public function getDSN();
-
-    abstract public function getUserName();
-
-    abstract public function getPassword();
 
 } 

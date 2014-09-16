@@ -10,7 +10,7 @@ namespace Exaprint\DAL\DB;
 
 use RBM\Utils\Dsn;
 
-class ServerEnvStrategy extends AbstractStrategy {
+class ServerEnvStrategy extends AbstractCommonStrategy {
 
     public function isValid() {
         $lReturn = false;

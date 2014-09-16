@@ -155,6 +155,7 @@ class DB extends PDO
      */
     public function __construct($pEnvironment, $pOptionalParameters = null) {
 
+        // The first valid strategy is used.
         $lStrategies = array(
             "Exaprint\\DAL\\DB\\ConfigurationStrategy",
             "Exaprint\\DAL\\DB\\ServerEnvStrategy"

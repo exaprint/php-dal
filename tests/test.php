@@ -1,13 +1,16 @@
 <?php
 
 require '../vendor/autoload.php';
-\Exaprint\DAL\DB::init();
-$renderer = new \RBM\SqlQuery\Renderer\SqlServer();
+require '/Users/admin/Sites/env.php';
 
-$select = new \Exaprint\DAL\Produit\Famille\Produit\Select();
-$select->cols([]);
-$select->filter()->IDProduitFamilleProduit(1);
+$fraisPort = new \Exaprint\DAL\WS\FraisDePortCommande();
+$fraisPort->idAdresseLivraison(2300239);
+$fraisPort->idProduit(184953);
+$fraisPort->poidsTotalCommande(2200);
 
-$select->produitOptions()->valeurs()->optionValeurs('IDProduitOptionValeur')->libelle(1)->cols('LibelleTraduit');
+/** @var \Exaprint\DAL\WS\FraisDePortCommandeResult $fraisPortResult */
+$fraisPortResult = \Exaprint\DAL\WS\WebServiceClient::get('prod')->call($fraisPort);
 
-echo $select;
+$frais = new \Exaprint\DAL\WS\CSV\Frais($fraisPortResult->montantFrais, \Exaprint\DAL\Frais\TypeFrais::TRANSPORT, 0);
+
+print_r($frais->asArray());

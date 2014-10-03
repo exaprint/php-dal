@@ -25,6 +25,7 @@ class GestionContact extends WebServiceAbstract
         'pbExapassActif'          => true,
         'pbEstContactPrincipal'   => true,
         'pnIdLangueMailing'       => null,
+        'pbEstEnCopieMail'        => false,
     ];
 
     /**
@@ -177,5 +178,10 @@ class GestionContact extends WebServiceAbstract
     public function pnIdLangueMailing($value)
     {
         return $this->_setParam('pnIdLangueMailing', $value, self::TYPE_STRING);
+    }
+
+    public function pbEstEnCopieMail($value)
+    {
+        return $this->_setParam('pbEstEnCopieMail', $value, self::TYPE_STRING);
     }
 }

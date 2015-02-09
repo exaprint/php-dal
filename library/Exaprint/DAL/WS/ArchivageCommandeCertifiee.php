@@ -25,6 +25,6 @@ class ArchivageCommandeCertifiee extends WebServiceAbstract
      */
     public function orderId($orderId)
     {
-        return $this->_setParam('pnIdCommande', $orderId, self::TYPE_STRING);
+        return $this->_setParam('pnIdCommande', $orderId, self::TYPE_INT);
     }
 }

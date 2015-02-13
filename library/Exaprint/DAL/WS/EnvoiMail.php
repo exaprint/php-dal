@@ -14,14 +14,14 @@ class EnvoiMail extends WebServiceAbstract
 
     protected $params = [
         'psCleJeton'            => null,
-        'pnIDSociete'           => 0,
+        'pnIDSociete'           => 1,
         'pnIDMail'              => 0,
-        'pnIDLangue'            => 0,
-        'psListeAdresseA'       => null,
-        'psListeAdresseCC'      => null,
-        'psListeAdresseCCI'     => null,
-        'psCSVParametreMail'    => null,
-        'psAdresseExpediteur'   => null,
+        'pnIDLangue'            => 1,
+        'psListeAdresseA'       => '',
+        'psListeAdresseCC'      => '',
+        'psListeAdresseCCI'     => '',
+        'psCSVParametreMail'    => '',
+        'psAdresseExpediteur'   => '',
     ];
     /**
      * @return string

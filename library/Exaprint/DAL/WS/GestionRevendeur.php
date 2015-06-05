@@ -37,6 +37,10 @@ class GestionRevendeur extends WebServiceAbstract
         'psRegion'            => '',
         'pbEstDetenteurSiret' => 0,
         'psInfosCommerciales' => '',
+        'pbEstInscritMDA'     => 0,
+        'pbEstAdherentMDA'    => 0,
+        'psNumeroOrdreMDA'    => '',
+        'psStockageCarteMDA'  => ''
     ];
 
     /**
@@ -184,6 +188,26 @@ class GestionRevendeur extends WebServiceAbstract
     public function psInfosCommerciales($value)
     {
         return $this->_setParam('psInfosCommerciales', $value, self::TYPE_STRING);
+    }
+
+    public function pbEstInscritMDA($value)
+    {
+        return $this->_setParam('pbEstInscritMDA', $value, self::TYPE_BOOL);
+    }
+
+    public function pbEstAdherentMDA($value)
+    {
+        return $this->_setParam('pbEstAdherentMDA', $value, self::TYPE_BOOL);
+    }
+
+    public function psNumeroOrdreMDA($value)
+    {
+        return $this->_setParam('psNumeroOrdreMDA', $value, self::TYPE_STRING);
+    }
+
+    public function psStockageCarteMDA($value)
+    {
+        return $this->_setParam('psStockageCarteMDA', $value, self::TYPE_STRING);
     }
 
 

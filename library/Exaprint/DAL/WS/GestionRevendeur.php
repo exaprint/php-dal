@@ -41,6 +41,9 @@ class GestionRevendeur extends WebServiceAbstract
         'pbEstAdherentMDA'    => 0,
         'psNumeroOrdreMDA'    => '',
         'psStockageCarteMDA'  => ''
+        'psConnuExparint'     => null,
+        'psOrigineAutre'      => null
+
     ];
 
     /**
@@ -210,5 +213,14 @@ class GestionRevendeur extends WebServiceAbstract
         return $this->_setParam('psStockageCarteMDA', $value, self::TYPE_STRING);
     }
 
+    public function psConnuExparint($value)
+    {
+        return $this->_setParam('psConnuExparint', $value, self::TYPE_STRING);
+    }
+
+    public function psOrigineAutre($value)
+    {
+        return $this->_setParam('psOrigineAutre', $value, self::TYPE_STRING);
+    }
 
 }

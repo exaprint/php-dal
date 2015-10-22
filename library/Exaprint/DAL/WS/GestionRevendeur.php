@@ -41,8 +41,8 @@ class GestionRevendeur extends WebServiceAbstract
         'pbEstAdherentMDA'    => 0,
         'psNumeroOrdreMDA'    => '',
         'psStockageCarteMDA'  => '',
-        'psConnuExparint'     => null,
-        'psOrigineAutre'      => null
+        'psConnuExparint'     => '',
+        'psOrigineAutre'      => ''
 
     ];
 

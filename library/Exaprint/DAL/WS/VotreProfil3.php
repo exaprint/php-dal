@@ -6,8 +6,6 @@ class VotreProfil3 extends WebServiceAbstract
     protected $_params = [
         'psCleJeton' => null,
         'pnIdClient' => null,
-        'psConnuExparint' => null,
-        'psOrigineAutre' => null,
         'psCSVAttenteExaprint' => null,
         'psCSVProduitInteresse' => null
     ];
@@ -36,24 +34,6 @@ class VotreProfil3 extends WebServiceAbstract
     public function pnIdClient($value)
     {
         return $this->_setParam('pnIdClient', $value, self::TYPE_STRING);
-    }
-
-    /**
-     * @param $value
-     * @return $this
-     */
-    public function psConnuExparint($value)
-    {
-        return $this->_setParam('psConnuExparint', $value, self::TYPE_STRING);
-    }
-
-    /**
-     * @param $value
-     * @return $this
-     */
-    public function psOrigineAutre($value)
-    {
-        return $this->_setParam('psOrigineAutre', $value, self::TYPE_STRING);
     }
 
     /**

@@ -180,8 +180,12 @@ class GestionContact extends WebServiceAbstract
         return $this->_setParam('pnIdLangueMailing', $value, self::TYPE_STRING);
     }
 
+    /**
+     * @param $value
+     * @return $this
+     */
     public function pbEstEnCopieMail($value)
     {
-        return $this->_setParam('pbEstEnCopieMail', $value, self::TYPE_STRING);
+        return $this->_setParam('pbEstEnCopieMail', $value, self::TYPE_BOOL);
     }
 }

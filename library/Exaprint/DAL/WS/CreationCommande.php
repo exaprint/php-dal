@@ -55,7 +55,7 @@ class CreationCommande extends WebServiceAbstract
         'psCSVFraisExaclub'              => '',
         'psCSVFraisBatPapier'            => '',
         'pmMontantRevente'               => 0,
-
+        'pnIdCityRush'                   => 0
     ];
 
     /**
@@ -299,5 +299,10 @@ class CreationCommande extends WebServiceAbstract
     public function psCSVFraisBatPapier($value)
     {
         return $this->_setParam('psCSVFraisBatPapier', $value, self::TYPE_CSV);
+    }
+
+    public function pnIdCityRush($value)
+    {
+        return $this->_setParam('pnIdCityRush', $value, self::TYPE_INT);
     }
 }

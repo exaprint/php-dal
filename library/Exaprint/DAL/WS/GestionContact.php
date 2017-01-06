@@ -26,6 +26,7 @@ class GestionContact extends WebServiceAbstract
         'pbEstContactPrincipal'   => true,
         'pnIdLangueMailing'       => null,
         'pbEstEnCopieMail'        => false,
+        'pbMailingInfo'           => false
     ];
 
     /**
@@ -187,5 +188,14 @@ class GestionContact extends WebServiceAbstract
     public function pbEstEnCopieMail($value)
     {
         return $this->_setParam('pbEstEnCopieMail', $value, self::TYPE_BOOL);
+    }
+
+    /**
+     * @param $value
+     * @return $this
+     */
+    public function pbMailingInfo($value)
+    {
+        return $this->_setParam('pbMailingInfo', $value, self::TYPE_BOOL);
     }
 }

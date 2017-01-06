@@ -16,7 +16,8 @@ class GestionRevendeurSimple extends WebServiceAbstract
         'pnIdPays'            => 1,
         'psConnuExparint'     => '',
         'psOrigineAutre'      => '',
-        'psTelephone'         => ''
+        'psTelephone'         => '',
+        'pbMailingInfo'       => 0
     ];
 
     /**
@@ -82,4 +83,8 @@ class GestionRevendeurSimple extends WebServiceAbstract
         return $this->_setParam('psTelephone', $value, self::TYPE_STRING);
     }
 
+    public function pbMailingInfo($value)
+    {
+        return $this->_setParam('pbMailingInfo', $value, self::TYPE_BOOL);
+    }
 }

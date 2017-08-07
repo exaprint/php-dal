@@ -16,7 +16,8 @@ class GestionRevendeurSimple extends WebServiceAbstract
         'pnIdPays'            => 1,
         'psConnuExparint'     => '',
         'psOrigineAutre'      => '',
-        'psTelephone'         => ''
+        'psTelephone'         => '',
+        'psPassword'          => '',
     ];
 
     /**
@@ -82,4 +83,8 @@ class GestionRevendeurSimple extends WebServiceAbstract
         return $this->_setParam('psTelephone', $value, self::TYPE_STRING);
     }
 
+    public function psPassword($value)
+    {
+        return $this->_setParam('psPassword', $value, self::TYPE_STRING);
+    }
 }

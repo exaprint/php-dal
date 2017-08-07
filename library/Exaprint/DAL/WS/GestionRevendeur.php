@@ -42,8 +42,8 @@ class GestionRevendeur extends WebServiceAbstract
         'psNumeroOrdreMDA'    => '',
         'psStockageCarteMDA'  => '',
         'psConnuExparint'     => '',
-        'psOrigineAutre'      => ''
-
+        'psOrigineAutre'      => '',
+        'psPassword'          => '',
     ];
 
     /**
@@ -223,4 +223,8 @@ class GestionRevendeur extends WebServiceAbstract
         return $this->_setParam('psOrigineAutre', $value, self::TYPE_STRING);
     }
 
+    public function psPassword($value)
+    {
+        return $this->_setParam('psPassword', $value, self::TYPE_STRING);
+    }
 }

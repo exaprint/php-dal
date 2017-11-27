@@ -11,11 +11,25 @@
     "require": {
         "php": ">=5.4.0",
 
-        "romainbessugesmeusy/php-dsn-factory": "*",
-        "romainbessugesmeusy/php-sql-query": "*",
-        "rbm/php-results-combinator": "*",
+        "romainbessugesmeusy/php-dsn-factory": "dev-master",
+        "romainbessugesmeusy/php-sql-query": "dev-master",
+        "rbm/php-results-combinator": "dev-master",
         "jdorn/sql-formatter": "*"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:/exaprint/php-dsn-factory.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:/exaprint/php-sql-query.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:/exaprint/php-results-combinator.git"
+        }
+    ],
     "autoload": {
         "psr-0": {
             "Exaprint": "./library/"

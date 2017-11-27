@@ -1,0 +1,193 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "16d9a1726f6812a384b64ddb5f24cbd8",
+    "packages": [
+        {
+            "name": "jdorn/sql-formatter",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jdorn/sql-formatter.git",
+                "reference": "7ef9b85961956aa572413693e1194b60f50ab9ab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jdorn/sql-formatter/zipball/7ef9b85961956aa572413693e1194b60f50ab9ab",
+                "reference": "7ef9b85961956aa572413693e1194b60f50ab9ab",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "bin": [
+                "bin/sql-formatter"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "lib"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeremy Dorn",
+                    "email": "jeremy@jeremydorn.com",
+                    "homepage": "http://jeremydorn.com/"
+                }
+            ],
+            "description": "a PHP SQL highlighting library",
+            "homepage": "https://github.com/jdorn/sql-formatter/",
+            "keywords": [
+                "highlight",
+                "sql"
+            ],
+            "time": "2015-08-30T16:36:01+00:00"
+        },
+        {
+            "name": "rbm/php-results-combinator",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:/exaprint/php-results-combinator.git",
+                "reference": "e7110af43f8bab54ef833e67daf1c9e88330991e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/exaprint/php-results-combinator/zipball/e7110af43f8bab54ef833e67daf1c9e88330991e",
+                "reference": "e7110af43f8bab54ef833e67daf1c9e88330991e",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "RBM": "lib/."
+                }
+            },
+            "authors": [
+                {
+                    "name": "Romain Bessuges-Meusy",
+                    "email": "romainbessuges@gmail.com"
+                }
+            ],
+            "description": "combine rows",
+            "support": {
+                "source": "https://github.com/exaprint/php-results-combinator/tree/master"
+            },
+            "time": "2013-05-16T08:08:55+00:00"
+        },
+        {
+            "name": "romainbessugesmeusy/php-dsn-factory",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:/exaprint/php-dsn-factory.git",
+                "reference": "9c1d48ff4233f7cb2923b3abf700c8cac157e57b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/exaprint/php-dsn-factory/zipball/9c1d48ff4233f7cb2923b3abf700c8cac157e57b",
+                "reference": "9c1d48ff4233f7cb2923b3abf700c8cac157e57b",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "RBM": "lib/."
+                }
+            },
+            "authors": [
+                {
+                    "name": "Romain Bessuges",
+                    "email": "romainbessuges@gmail.com"
+                }
+            ],
+            "description": "DSN Factory for PDO",
+            "support": {
+                "source": "https://github.com/exaprint/php-dsn-factory/tree/dev-master"
+            },
+            "time": "2013-03-04T13:32:57+00:00"
+        },
+        {
+            "name": "romainbessugesmeusy/php-sql-query",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:/exaprint/php-sql-query.git",
+                "reference": "9c94bc38b1031b0358d9f3a4bc35cbe076d4581b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/exaprint/php-sql-query/zipball/9c94bc38b1031b0358d9f3a4bc35cbe076d4581b",
+                "reference": "9c94bc38b1031b0358d9f3a4bc35cbe076d4581b",
+                "shasum": ""
+            },
+            "require-dev": {
+                "jdorn/sql-formatter": "1.3.*@dev",
+                "phpunit/phpunit": "3.7.*"
+            },
+            "suggest": {
+                "jdorn/sql-formatter": "Allows query formatting"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "RBM": "lib/."
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Romain Bessuges",
+                    "email": "romainbessuges@gmail.com"
+                }
+            ],
+            "description": "php-sql-query is an abstraction layer for SQL query construction",
+            "keywords": [
+                "abstraction",
+                "delete",
+                "insert",
+                "query",
+                "select",
+                "sql",
+                "update",
+                "where"
+            ],
+            "support": {
+                "source": "https://github.com/exaprint/php-sql-query/tree/master"
+            },
+            "time": "2014-06-06T15:44:35+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "romainbessugesmeusy/php-dsn-factory": 20,
+        "romainbessugesmeusy/php-sql-query": 20,
+        "rbm/php-results-combinator": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.4.0"
+    },
+    "platform-dev": []
+}

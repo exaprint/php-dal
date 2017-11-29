@@ -6,7 +6,7 @@ class MajPortefeuille extends WebServiceAbstract
 {
     protected $_params = [
         'psCleJeton'   => null,
-        'pnIdClient' => 0,
+        'pnIDClient' => 0,
         'pbEstProfessionnel' => false,
         'pbEstRevendeur' => false,
         'pnIDPortefeuille' => 0,
@@ -26,7 +26,7 @@ class MajPortefeuille extends WebServiceAbstract
      */
     public function idClient($idClient)
     {
-        return $this->_setParam('pnIdClient', $idClient, self::TYPE_INT);
+        return $this->_setParam('pnIDClient', $idClient, self::TYPE_INT);
     }
 
     /**

@@ -172,11 +172,25 @@ class DB extends PDO
             }
             if($lStrategy->isValid()) {
                 $lValidStrategyFound = true;
-                parent::__construct(
-                    $lStrategy->getDsn(),
-                    $lStrategy->getUserName(),
-                    $lStrategy->getPassword()
-                );
+                try {
+                    parent::__construct(
+                        $lStrategy->getDsn(),
+                        $lStrategy->getUserName(),
+                        $lStrategy->getPassword()
+                    );
+                } catch (\PDOException $e) {
+                    //trick to avoid random temporary access error to the DB
+                    sleep(2);
+                    try {
+                        parent::__construct(
+                            $lStrategy->getDsn(),
+                            $lStrategy->getUserName(),
+                            $lStrategy->getPassword()
+                        );
+                    } catch (\PDOException $e) {
+                        throw new Exception(get_class($e) . ' Cannot access to the Database:' . $e->getMessage());
+                    }
+                }
                 break;
             }
         }

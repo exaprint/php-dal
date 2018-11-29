@@ -1,8 +1,7 @@
 <?php
 
 require '../vendor/autoload.php';
-//require '/Users/admin/Sites/env.php';
-use Exaprint\DAL\Env as Env;
+use Exaprint\DAL\Env;
 
 $fraisPort = new \Exaprint\DAL\WS\FraisDePortCommande();
 $fraisPort->idAdresseLivraison(2300239);

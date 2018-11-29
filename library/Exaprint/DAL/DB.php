@@ -180,7 +180,7 @@ class DB extends PDO
                     );
                 } catch (\PDOException $e) {
                     //trick to avoid random temporary access error to the DB
-                    sleep(2);
+                    sleep(1);
                     try {
                         parent::__construct(
                             $lStrategy->getDsn(),
